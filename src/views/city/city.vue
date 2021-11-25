@@ -43,8 +43,9 @@ export default {
   mounted() {
     this.cityid = this.$route.params.cityid
     currentcity(this.cityid).then(res => {
-      const resJson = JSON.parse(res)
-      this.cityname = resJson.name
+      // const resJson = JSON.parse(res)
+      console.log(res)
+      this.cityname = res.name
     })
     this.initData()
   },

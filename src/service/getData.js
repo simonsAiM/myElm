@@ -57,3 +57,19 @@ export const groupcity = () => fetch('/api/v1/cities', {
  export const getUser = () => fetch('/api/v1/user', {user_id: getStore('user_id')})
 
  export const getAddressList = user_id => fetch('/api/v1/users/' + user_id)
+
+/**
+ * 获取msite页面地址信息
+ * @returns 
+ */
+export const msiteAddress = geohash => fetch('/api/v2/pois/' + geohash)
+
+/**
+ * 获取msite页面视频分类列表
+ * @returns 
+ */
+ export const msiteFoodTypes = geohash => fetch('/api/v2/index_entry', {
+  geohash,
+  group_type: '1',
+  'flags[]': 'F'
+ })

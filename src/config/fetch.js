@@ -18,7 +18,7 @@ export default async(url='', data = {}, type='GET', method = 'fetch') => {
   
   if (window.fetch && method ==='fetch') {
     let requestConfig = {
-      Credential: 'include',
+      // credential: 'include',
       method: type,
       headers: {
         'Accept': 'applicaiton/json',
@@ -37,7 +37,6 @@ export default async(url='', data = {}, type='GET', method = 'fetch') => {
     try {
       const response = await fetch(url, requestConfig);
       const res = await response.text()
-      const responseJson = JSON.parse(res)
       return res
     } catch (err) {
       throw new Error(err)
