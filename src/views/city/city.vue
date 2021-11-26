@@ -74,6 +74,7 @@ export default {
      * 如果没有则新增，如果有则不作重复储存，判断完成后进入下一页
      */
     nextpage(index, geohash) {
+      console.log('nextpage')
       let history = getStore('placeHistory')
       let choosePlace = this.placelist[index]
 
@@ -92,10 +93,9 @@ export default {
         
       } else {
         this.placeHistorty.push(choosePlace)
-
-        setStore('placeHistory', JSON.stringify(this.placeHistorty))
-        this.$router.push({path: '/msite', query: {geohash}})
       }
+      setStore('placeHistory', JSON.stringify(this.placeHistorty))
+      this.$router.push({path: '/msite', query: {geohash}})
     },
 
     clearAll() {

@@ -2,9 +2,9 @@ import App from '../App'
 
 const home = r => require.ensure([], () => r(require('../views/home/home')), 'home')
 const city = r => require.ensure([], () => r(require('../views/city/city')), 'city')
-// const msite = r => require.ensure([], () => r(require('../views/msite/msite')), 'msite')
+const msite = r => require.ensure([], () => r(require('../views/msite/msite')), 'msite')
 // const search = r => require.ensure([], () => r(require('../views/search/search')), 'search')
-// const shop = r => require.ensure([], () => r(require('../views/shop/shop')), 'shop')
+const shop = r => require.ensure([], () => r(require('../views/shop/shop')), 'shop')
 // const login = r => require.ensure([], () => r(require('../views/login/login')), 'login')
 // const profile = r => require.ensure([], () => r(require('../views/profile/profile')), 'profile')
 // const forget = r => require.ensure([], () => r(require('../views/forget/forget')), 'forget')
@@ -69,11 +69,11 @@ export default [{
             component: city
         },
         //所有商铺列表页
-        // {
-        //     path: '/msite',
-        //     component: msite,
-        //     meta: { keepAlive: true },
-        // },
+        {
+            path: '/msite',
+            component: msite,
+            meta: { keepAlive: true },
+        },
         //特色商铺列表页
         // {
         //     path: '/food',
@@ -85,21 +85,21 @@ export default [{
         //     component: search
         // },
         //商铺详情页
-        // {
-        //     path: '/shop',
-        //     component: shop,
-        //     children: [{
-        //         path: 'foodDetail', //食品详情页
-        //         component: foodDetail,
-        //     }, {
-        //         path: 'shopDetail', //商铺详情页
-        //         component: shopDetail,
-        //         children: [{
-        //             path: 'shopSafe', //商铺安全认证页
-        //             component: shopSafe,
-        //         }, ]
-        //     }]
-        // },
+        {
+            path: '/shop',
+            component: shop,
+            // children: [{
+            //     path: 'foodDetail', //食品详情页
+            //     component: foodDetail,
+            // }, {
+            //     path: 'shopDetail', //商铺详情页
+            //     component: shopDetail,
+            //     children: [{
+            //         path: 'shopSafe', //商铺安全认证页
+            //         component: shopSafe,
+            //     }, ]
+            // }]
+        },
         //确认订单页
         // {
         //     path: '/confirmOrder',

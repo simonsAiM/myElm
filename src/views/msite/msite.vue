@@ -1,6 +1,6 @@
 <template>
   <div>
-    <head-top signin-up="msite">
+    <header-top signin-up="msite">
       <router-link :to="'/search/geohash'" class="link_search" slot="search">
         <svg
           width="100%"
@@ -28,12 +28,12 @@
       <router-link to="/home" slot="msite-title" clas="msite_title">
         <span class="title_text ellipsis">{{ msiteTitle }}</span>
       </router-link>
-    </head-top>
+    </header-top>
     <nav class="msite_nav">
       <div class="swiper-container" v-if="foodTypes.length">
         <div class="swiper-wrapper">
           <div
-            class="swiper-slide foo_types_container"
+            class="swiper-slide food_types_container"
             v-for="(item, index) in foodTypes"
             :key="index"
           >
@@ -76,9 +76,9 @@
 </template>
 
 <script>
-import headerTop from 'components/header/head'
-import shopList from 'components/commpon/shopList'
-import footGuide from 'components/footGuide/footGuide'
+import headerTop from 'src/components/header/head'
+import shopList from 'src/components/common/shopList'
+import footGuide from 'src/components/footGuide/footGuide'
 import { mapMutations } from 'vuex'
 import {msiteAddress, msiteFoodTypes, cityGuess} from 'src/service/getData'
 import 'src/plugins/swiper.min.js'
@@ -108,24 +108,43 @@ export default {
     let res = await msiteAddress(this.geohash)
     this.msiteTitle = res.name
     // 记录当前您经度纬度
-    this.RECORD_ADDRESS(re)
+    this.RECORD_ADDRESS(res)
 
     this.hasGetData = true
   },
   mounted() {
-    // 获取当行食品类型
-    msiteFoodTyped(this.geohash)
+    // 获取导航食品类型
+    msiteFoodTypes(this.geohash)
       .then(res => {
-        let resLen = res.length
-        let resArr = [...res] // 返回一个新的数组
+        let resJson = JSON.parse(res)
+        let resLen = resJson.length
+        let resArr = [...resJson] // 返回一个新的数组
         let foodArr = []
         for (let i = 0, j = 0; i < resLen; i += 8, j++) {
           foodArr[j] = resArr.splice(0, 8)
         }
+        this.foodTypes = foodArr
+      }).then(() => {
+        console.log(this.foodTypes)
+        new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          loop: true
+        })
       })
   },
   methods:{
     ...mapMutations(['RECORD_ADDRESS', 'SAVE_GEOHASH']),
+    // 解码url地址，求取restaurant_category_id值
+    getCategoryId(url) {
+      let urlData = decodeURIComponent(
+        url.split('=')[1].replace('&target_name','')
+      )
+      if(/restaurant_category_id/gi.test(urlData)) {
+        return JSON.parse(urlData).restaurant_category_id.id
+      } else {
+        return '';
+      }
+    }
   },
   components: {
     headerTop,
@@ -134,3 +153,75 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+@import "src/style/mixin";
+.link_search {
+  left: 0.8rem;
+  @include wh(0.9rem, 0.9rem);
+  @include ct;
+}
+.msite_title {
+  @include center;
+  width: 50%;
+  color: #fff;
+  text-align: center;
+  margin-left: -0.5rem;
+  .title_text {
+    @include sc(0.8rem, #fff);
+    text-align: center;
+    display: block;
+  }
+}
+.msite_nav {
+  padding-top: 2.1rem;
+  background-color: #fff;
+  border-bottom: 0.025rem solid $bc;
+  height: 10.6rem;
+  .swiper-container {
+    @include wh(100%, auto);
+    padding-bottom: 0.6rem;
+    .swiper-pagination {
+      bottom: 0.2rem;
+    }
+  }
+  .fl_back {
+    @include wh(100%, 100%);
+  }
+}
+.food_types_container {
+  display: flex;
+  flex-wrap: wrap;
+  .link_to_food {
+    width: 25%;
+    padding: 0.3rem 0rem;
+    @include fj(center);
+    figure {
+      img {
+        margin-bottom: 0.3rem;
+        @include wh(1.8rem, 1.8rem);
+      }
+      figcaption {
+        text-align: center;
+        @include sc(0.55rem, #666);
+      }
+    }
+  }
+}
+.shop_list_container {
+  margin-top: 0.4rem;
+  border-top: 0.025rem solid $bc;
+  background-color: #fff;
+  .shop_header {
+    .shop_icon {
+      fill: #999;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+      @include wh(0.6rem, 0.6rem);
+    }
+    .shop_header_title {
+      color: #999;
+      @include font(0.55rem, 1.6rem);
+    }
+  }
+}
+</style>
