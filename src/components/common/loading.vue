@@ -10,6 +10,7 @@
 
 <script>
     export default {
+			name: 'loading',
     	data(){
             return{
                 positionY: 0,

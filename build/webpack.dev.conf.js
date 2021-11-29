@@ -23,13 +23,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
-    client: {
-      logging: 'warn',
-      overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false,
-      progress: true
-    },
+    // client: {
+    //   logging: 'warn',
+    //   overlay: config.dev.errorOverlay
+    //   ? { warnings: false, errors: true }
+    //   : false,
+    //   progress: true
+    // },
     historyApiFallback: {
       rewrites: [
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
@@ -56,6 +56,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     //   }
     // }
     // quiet: true, // necessary for FriendlyErrorsPlugin
+  },
+  node: {
+    fs: 'empty',
+    child_process: 'empty'
   },
   plugins: [
     new webpack.DefinePlugin({

@@ -96,3 +96,45 @@ export const shopList = (latitude, longitude, offset, restaurant_category_id  = 
 
   return fetch('/api/shopping/restaurants', data)
 }
+
+/**
+ * 获取shop页面商铺详情
+ * @param {*} shopid 
+ * @param {*} latitude 
+ * @param {*} longitude 
+ * @returns 
+ */
+export const shopDetails = (shopid, latitude, longitude) => fetch('/api/shopping/restaurant/' + shopid, {
+  latitude,
+  longitude: `${longitude}&extras[]=activities&extras[]=album&extras[]=license&extras[]=identification&extras[]=statistics`
+})
+
+/**
+ * 获取shop页面菜单列表
+ * @param {*} restaurant_id 
+ * @returns 
+ */
+export const foodMenu = restaurant_id => fetch('/api/shopping/v2/menu',{restaurant_id})
+
+/**
+ * 获取商铺评价列表
+ * @param {*} shopid 
+ * @param {*} offset 
+ * @param {*} tag_name 
+ * @returns 
+ */
+export const getRatingList = (shopid, offset, tag_name = '') => fetch('/api/ugc/v2/restaurants/' + shopid + '/ratings', {
+  has_content: true,
+  offset,
+  limit: 0,
+  tag_name
+})
+
+/**
+ * 获取商铺评价分数
+ * @param {*} shopid 
+ * @returns 
+ */
+export const ratingScores = shopid => fetch('/api/ugc/v2/restaurants/' + shopid + '/ratings/scores')
+
+export const ratingTags = shopid => fetch('/api/ugc/v2/restaurants/' + shopid + '/ratings/tags')
