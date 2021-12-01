@@ -203,6 +203,7 @@ export default {
     }
   },
   created() {
+    console.lot('test......')
     this.initData()
   },
   mixins: [getImgPath],
