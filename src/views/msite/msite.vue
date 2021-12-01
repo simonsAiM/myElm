@@ -76,9 +76,9 @@
 </template>
 
 <script>
-import headerTop from 'src/components/header/head'
-import shopList from 'src/components/common/shopList'
-import footGuide from 'src/components/footGuide/footGuide'
+import headerTop from 'components/header/head'
+import shopList from 'components/common/shopList'
+import footGuide from 'components/footGuide/footGuide'
 import { mapMutations } from 'vuex'
 import {msiteAddress, msiteFoodTypes, cityGuess} from 'src/service/getData'
 import 'src/plugins/swiper.min.js'

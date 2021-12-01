@@ -82,7 +82,7 @@ export default {
 			item[food_id]['num']++
 		} else {
 			item[food_id] = {
-				"num": '',
+				"num": 1,
 				"id": food_id,
 				"name": name,
 				"price": price,

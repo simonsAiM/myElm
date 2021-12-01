@@ -138,3 +138,49 @@ export const getRatingList = (shopid, offset, tag_name = '') => fetch('/api/ugc/
 export const ratingScores = shopid => fetch('/api/ugc/v2/restaurants/' + shopid + '/ratings/scores')
 
 export const ratingTags = shopid => fetch('/api/ugc/v2/restaurants/' + shopid + '/ratings/tags')
+
+/**
+ * 获取search页面搜索结果
+ * @param {*} geohash 
+ * @param {*} value 
+ * @returns 
+ */
+export const searchRestaurant = (geohash, keyword) => fetch('/api/v4/restaurants', {
+  'extras[]': 'restaurant_activity',
+  geohash,
+  keyword,
+  type: 'search'
+})
+
+
+/**
+ * 获取food页面的 category 种类列表
+ */
+export const foodCategory = (latitude, longitude) => fetch('/api/shopping/v2/restaurant/category', {
+  latitude,
+  longitude
+})
+
+/**
+ * 获取food页面的配送方式
+ * @param {*} latitude 
+ * @param {*} longitude 
+ * @returns 
+ */
+export const foodDelivery = (latitude, longitude) => fetch('/api/shopping/v1/restaurants/delivery_modes', {
+  latitude,
+  longitude,
+  kw: ''
+})
+
+/**
+ * 获取food页面的活动列表
+ * @param {*} latitude 
+ * @param {*} longitude 
+ * @returns 
+ */
+export const foodActivity = (latitude, longitude) => fetch('/api/shopping/v1/restaurants/activity_attributes', {
+  latitude,
+  longitude,
+  kw: ''
+})

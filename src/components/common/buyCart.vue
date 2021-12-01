@@ -39,22 +39,22 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cartList'])
-  },
-  shopCart: function () {
-    return Object.assign({}, this.cartList[this.shopId])
-  },
-  foodNum: function () {
-    let category_id = this.foods.category_id
-    let item_id = this.foods.item_id
-    if (this.shopCart && this.shopCart[category_id] && this.shopCart[category_id][item_id]) {
-      let num = 0
-      Object.values(this.shopCart[category_id][item_id]).forEach((item, index) => {
-        num += item.num
-      })
-      return num
-    } else {
-      return 0
+    ...mapState(['cartList']),
+     shopCart: function () {
+      return Object.assign({}, this.cartList[this.shopId])
+    },
+    foodNum: function () {
+      let category_id = this.foods.category_id
+      let item_id = this.foods.item_id
+      if (this.shopCart && this.shopCart[category_id] && this.shopCart[category_id][item_id]) {
+        let num = 0
+        Object.values(this.shopCart[category_id][item_id]).forEach((item, index) => {
+          num += item.num
+        })
+        return num
+      } else {
+        return 0
+      }
     }
   },
   props: ['foods','shopId'],
@@ -76,6 +76,7 @@ export default {
     },
     // 显示规格列表
     showChooseList(foodScroll) {
+      
       this.$emit('showChooseList', foodScroll)
     },
     // 点击多规格商品的减按钮，弹出提示

@@ -3,7 +3,7 @@ import App from '../App'
 const home = r => require.ensure([], () => r(require('../views/home/home')), 'home')
 const city = r => require.ensure([], () => r(require('../views/city/city')), 'city')
 const msite = r => require.ensure([], () => r(require('../views/msite/msite')), 'msite')
-// const search = r => require.ensure([], () => r(require('../views/search/search')), 'search')
+const search = r => require.ensure([], () => r(require('../views/search/search')), 'search')
 const shop = r => require.ensure([], () => r(require('../views/shop/shop')), 'shop')
 // const login = r => require.ensure([], () => r(require('../views/login/login')), 'login')
 // const profile = r => require.ensure([], () => r(require('../views/profile/profile')), 'profile')
@@ -14,7 +14,7 @@ const shop = r => require.ensure([], () => r(require('../views/shop/shop')), 'sh
 // const invoiceRecord = r => require.ensure([], () => r(require('../views/vipcard/children/invoiceRecord')), 'invoiceRecord')
 // const useCart = r => require.ensure([], () => r(require('../views/vipcard/children/useCart')), 'useCart')
 // const vipDescription = r => require.ensure([], () => r(require('../views/vipcard/children/vipDescription')), 'vipDescription')
-// const food = r => require.ensure([], () => r(require('../views/food/food')), 'food')
+const food = r => require.ensure([], () => r(require('../views/food/food')), 'food')
 // const confirmOrder = r => require.ensure([], () => r(require('../views/confirmOrder/confirmOrder')), 'confirmOrder')
 // const remark = r => require.ensure([], () => r(require('../views/confirmOrder/children/remark')), 'remark')
 // const payment = r => require.ensure([], () => r(require('../views/confirmOrder/children/payment')), 'payment')
@@ -23,9 +23,9 @@ const shop = r => require.ensure([], () => r(require('../views/shop/shop')), 'sh
 // const chooseAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/chooseAddress')), 'chooseAddress')
 // const addAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/children/addAddress')), 'addAddress')
 // const searchAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/children/children/searchAddress')), 'searchAddress')
-// const foodDetail = r => require.ensure([], () => r(require('../views/shop/children/foodDetail')), 'foodDetail')
-// const shopDetail = r => require.ensure([], () => r(require('../views/shop/children/shopDetail')), 'shopDetail')
-// const shopSafe = r => require.ensure([], () => r(require('../views/shop/children/children/shopSafe')), 'shopSafe')
+const foodDetail = r => require.ensure([], () => r(require('../views/shop/children/foodDetail')), 'foodDetail')
+const shopDetail = r => require.ensure([], () => r(require('../views/shop/children/shopDetail')), 'shopDetail')
+const shopSafe = r => require.ensure([], () => r(require('../views/shop/children/children/shopSafe')), 'shopSafe')
 // const info = r => require.ensure([], () => r(require('../views/profile/children/info')), 'info')
 // const setusername = r => require.ensure([], () => r(require('../views/profile/children/children/setusername')), 'setusername')
 // const address = r => require.ensure([], () => r(require('../views/profile/children/children/address')), 'address')
@@ -75,30 +75,30 @@ export default [{
             meta: { keepAlive: true },
         },
         //特色商铺列表页
-        // {
-        //     path: '/food',
-        //     component: food
-        // },
+        {
+            path: '/food',
+            component: food
+        },
         //搜索页
-        // {
-        //     path: '/search/:geohash',
-        //     component: search
-        // },
+        {
+            path: '/search/:geohash',
+            component: search
+        },
         //商铺详情页
         {
             path: '/shop',
             component: shop,
-            // children: [{
-            //     path: 'foodDetail', //食品详情页
-            //     component: foodDetail,
-            // }, {
-            //     path: 'shopDetail', //商铺详情页
-            //     component: shopDetail,
-            //     children: [{
-            //         path: 'shopSafe', //商铺安全认证页
-            //         component: shopSafe,
-            //     }, ]
-            // }]
+            children: [{
+                path: 'foodDetail', //食品详情页
+                component: foodDetail,
+            }, {
+                path: 'shopDetail', //商铺详情页
+                component: shopDetail,
+                children: [{
+                    path: 'shopSafe', //商铺安全认证页
+                    component: shopSafe,
+                }, ]
+            }]
         },
         //确认订单页
         // {
