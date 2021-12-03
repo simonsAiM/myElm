@@ -698,6 +698,7 @@ export default {
       elBottom: 0,  //当前点击加按钮在网页中的绝对left值
       ratingScroll: null, //评论页scorll
       imgBaseUrl,
+      ratingScroll: null
     }
   },
   created() {

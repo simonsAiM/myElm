@@ -41,6 +41,7 @@ export default {
 		latitude,
 		longitude
 	}) {
+		console.log('latitude:',latitude)
 		state.latitude = latitude;
 		state.longitude = longitude;
 	},
@@ -138,5 +139,101 @@ export default {
 	// 记录购物车详情
 	[RECORD_SHOPDETAIL](state,detail) {
 		state.shopDetail = detail
-	}
+	},
+	// 进入订单详情页前保存该订单信息
+	[SAVE_ORDER](state,orderDetail) {
+		state.orderDetail = orderDetail
+	},
+	// 保存图片
+	[SAVE_AVANDER](state,imgPath) {
+		state.imgPath = imgPath
+	},
+	// 记录用户信息
+	[RECORD_USERINFO](state,info) {
+		state.userInfo = info
+		state.login = true
+		setStore('user_id', info.user_id)
+	},
+	// 下单成功，保存订单返回信息
+	[ORDER_SUCCESS](state, order) {
+		state.cartPrice = null
+		state.orderMessage = order
+	},
+	// 会员卡价格记录
+	[BUY_CART](state,price) {
+		state.cartPrice = price
+	},
+	// 记录订单页面用户选择的备注, 传递给订单确认页面
+	[CONFIRM_REMARK](state, {
+		remarkText,
+		inputText
+	}) {
+		state.remarkText = remarkText
+		state.inputText = inputText
+	},
+	//是否开发票
+	[CONFIRM_INVOICE](state, invoice) {
+		state.invoice = invoice;
+	},
+	//选择的地址
+	[CHOOSE_ADDRESS](state, {
+		address,
+		index
+	}) {
+		state.choosedAddress = address;
+		state.addressIndex = index;
+	},
+	//保存下单需要验证的返回值
+	[NEED_VALIDATION](state, needValidation) {
+		state.needValidation = needValidation;
+	},
+	//保存下单后购物id 和 sig
+	[SAVE_CART_ID_SIG](state, {
+		cart_id,
+		sig
+	}) {
+		state.cart_id = cart_id;
+		state.sig = sig;
+	},
+	//保存下单参数，用户验证页面调用
+	[SAVE_ORDER_PARAM](state, orderParam) {
+		state.orderParam = orderParam;
+	},
+	//保存商铺id
+	[SAVE_SHOPID](state, shopid) {
+		state.shopid = shopid;
+	},
+	//修改下单参数
+	[CHANGE_ORDER_PARAM](state, newParam) {
+		state.orderParam = Object.assign({}, state.orderParam, newParam);
+	},
+	//选择搜索的地址
+	[CHOOSE_SEARCH_ADDRESS](state, place) {
+		state.searchAddress = place;
+	},
+	//确认订单页添加新的的地址
+	[CONFIRM_ADDRESS](state, newAddress) {
+		state.newAddress.push(newAddress);
+	},
+	//保存所选问题标题和详情
+	[SAVE_QUESTION](state, question) {
+		state.question = {...question};
+	},
+	//退出登录
+	[OUT_LOGIN](state) {
+		state.userInfo = {};
+		state.login = false;
+	},
+	//修改用户名
+	[RETSET_NAME](state,username) {
+		state.userInfo = Object.assign({}, state.userInfo,{username})
+	},
+	//删除地址列表
+	[SAVE_ADDRESS](state, newAdress) {
+		state.removeAddress = newAdress
+	},
+	//添加地址name
+	[SAVE_ADDDETAIL](state, addAddress){
+		state.addAddress=addAddress;
+	},
 }

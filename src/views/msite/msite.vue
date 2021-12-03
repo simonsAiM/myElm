@@ -25,7 +25,7 @@
           />
         </svg>
       </router-link>
-      <router-link to="/home" slot="msite-title" clas="msite_title">
+      <router-link to="/home" slot="msite-title" class="msite_title">
         <span class="title_text ellipsis">{{ msiteTitle }}</span>
       </router-link>
     </header-top>
@@ -106,9 +106,10 @@ export default {
     this.SAVE_GEOHASH(this.geohash)
     // 获取位置信息
     let res = await msiteAddress(this.geohash)
-    this.msiteTitle = res.name
+    let resJson = JSON.parse(res)
+    this.msiteTitle = resJson.name
     // 记录当前您经度纬度
-    this.RECORD_ADDRESS(res)
+    this.RECORD_ADDRESS(resJson)
 
     this.hasGetData = true
   },
@@ -125,7 +126,6 @@ export default {
         }
         this.foodTypes = foodArr
       }).then(() => {
-        console.log(this.foodTypes)
         new Swiper('.swiper-container', {
           pagination: '.swiper-pagination',
           loop: true

@@ -3,7 +3,7 @@
     <head-top :head-title="headTitle" goBack="true"></head-top>
     <section class="sort_container">
       <div class="sort_item" :class="{choose_type: sortBy == 'food'}">
-        <div class="sort_item_contaienr" @click="chooseType('food')">
+        <div class="sort_item_container" @click="chooseType('food')">
           <div class="sort_item_border">
             <span :class="{category_title: sortBy == 'food'}">{{foodTitle}}</span>
             <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" version="1.1" class="sort_icon">
@@ -15,7 +15,7 @@
           <section v-show="sortBy == 'food'" class="category_container sort_detail_type">
             <section class="category_left">
               <ul>
-                <li v-for="(item, index) in category" :key="index" class="category_left_li" :class="{category_active: restaurant_category_id == item.id}">
+                <li v-for="(item, index) in category" :key="index" class="category_left_li" :class="{category_active: restaurant_category_id == item.id}" @click="selectCategoryName(item.id, index)">
                   <section>
                     <img :src="getImgPath(item.image_url)" v-if="index" class="category_icon" alt="">
                     <span>{{item.name}}</span>
@@ -31,7 +31,7 @@
             </section>
             <section class="category_right">
               <ul>
-                <li v-for="(item, index) in category" :key="index" v-if="index" class="category_right_li" @click="getCategoryIds(item.id, item.name)" :class="{category_right_choosed: restaurant_category_ids == item.id || (!restaurant_category_ids) && index == 0}">
+                <li v-for="(item, index) in categoryDetail" :key="index" v-if="index" class="category_right_li" @click="getCategoryIds(item.id, item.name)" :class="{category_right_choosed: restaurant_category_ids == item.id || (!restaurant_category_ids) && index == 0}">
                   <span>{{item.name}}</span>
                   <span>{{item.count}}</span>
                 </li>
@@ -56,7 +56,7 @@
                 <svg>
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#default"></use>
 								</svg>
-                <p data="0" :class="{sort_select: sortByType == 0}">
+                <p data="0"  data-type="0" :class="{sort_select: sortByType == 0}">
                   <span>智能排序</span>
                   <svg v-if="sortByType == 0">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#selected"></use>
@@ -67,7 +67,7 @@
                 <svg>
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#distance"></use>
 								</svg>
-                <p data="5" :class="{sort_select: sortByType == 5}">
+                <p data="5" data-type="5" :class="{sort_select: sortByType == 5}">
                   <span>距离最近</span>
                   <svg v-if="sortByType == 5">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#selected"></use>
@@ -78,7 +78,7 @@
                 <svg>
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot"></use>
 								</svg>
-                <p data="6" :class="{sort_select: sortByType == 6}">
+                <p data="6" data-type="6" :class="{sort_select: sortByType == 6}">
                   <span>销量最高</span>
                   <svg v-if="sortByType == 6">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#selected"></use>
@@ -89,7 +89,7 @@
                 <svg>
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#price"></use>
 								</svg>
-                <p data="1" :class="{sort_select: sortByType == 1}">
+                <p data="1" data-type="1" :class="{sort_select: sortByType == 1}">
                   <span>起送价最低</span>
                   <svg v-if="sortByType == 1">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#selected"></use>
@@ -100,7 +100,7 @@
                 <svg>
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#speed"></use>
 								</svg>
-                <p data="2" :class="{sort_select: sortByType == 2}">
+                <p data="2" data-type="2" :class="{sort_select: sortByType == 2}">
                   <span>配送速度最快</span>
                   <svg v-if="sortByType == 2">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#selected"></use>
@@ -111,7 +111,7 @@
                 <svg>
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rating"></use>
 								</svg>
-                <p data="3" :class="{sort_select: sortByType == 3}">
+                <p data="3" data-type="3" :class="{sort_select: sortByType == 3}">
                   <span>评分最高</span>
                   <svg v-if="sortByType == 3">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#selected"></use>
@@ -166,7 +166,7 @@
       <div class="back_cover" v-show="sortBy"></div>
     </transition>
     <section class="shop_list_container">
-      <!-- <shop-list :geohash="geohash" :restaurantCategoryId="restaurant_category_id" :restaurantCategoryIds="restaurant_category_ids" :sortByType='sortByType' :deliveryMode="delivery_mode" :confirmSelect="confirmStatus" :supportIds="support_ids" v-if="latitude"></shop-list> -->
+      <shop-list :geohash="geohash" :restaurantCategoryId="restaurant_category_id" :restaurantCategoryIds="restaurant_category_ids" :sortByType='sortByType' :deliveryMode="delivery_mode" :confirmSelect="confirmStatus" :supportIds="support_ids"></shop-list>
     </section>
   </div>
 </template>
@@ -203,7 +203,6 @@ export default {
     }
   },
   created() {
-    console.lot('test......')
     this.initData()
   },
   mixins: [getImgPath],
@@ -217,10 +216,11 @@ export default {
       this.geohash = this.$route.query.geohash
       this.headTitle = this.$route.query.title
       this.foodTitle = this.headTitle
+      this.restaurant_category_id = this.$route.query.restaurant_category_id
       // 防止页面刷新时，vuex状态丢失，经纬度需要重新获取，并存入vuex
       if(!this.latitude) {
         let res = await msiteAddress(this.geohash)
-        this.RECORD_ADDRESS(res)
+        this.RECORD_ADDRESS(JSON.parse(res))
       }
       // 获取category分来左侧数据
       let category = await foodCategory(this.latitude, this.longitude)
@@ -259,29 +259,31 @@ export default {
     // 选中Category左侧列表的某个选项时，右侧渲染相应的sub_categories列表
     selectCategoryName(id, index) {
       if (index === 0) {
-        this.restaurant_category_id = null
+        this.restaurant_category_ids = null
         this.sortBy = ''
       } else {
         this.restaurant_category_id = id
         this.categoryDetail = this.category[index].sub_categories
+        console.log(this.category[index].sub_categories);
       }
     },
    //选中Category右侧列表的某个选项时，进行筛选，重新获取数据并渲染
     getCategoryIds(id, name) {
-      this.restaurant_category_id = id
+      this.restaurant_category_ids = id
       this.sortBy = ''
       this.foodTitle = this.headTitle = name
     },
     //点击某个排序方式，获取事件对象的data值，并根据获取的值重新获取数据渲染
     sortList(event) {
       let node
+      console.log(event.target)
       // 如果点击的是 span 中的文字，则需要获取到 span 的父标签 p
-      if (event.target.nodeName.toUpperCase() !== 'p') {
+      if (event.target.nodeName.toUpperCase() !== 'P') {
         node = event.target.parentNode
       } else {
         node = event.target
       }
-      this.sortByType = node.getAttribute('datta')
+      this.sortByType = node.getAttribute('data')
       this.sortBy = ''
     },
     //筛选选项中的配送方式选择

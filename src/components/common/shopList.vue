@@ -1,6 +1,5 @@
 <template>
 	<div class="shoplist_container">
-		<h1>shopList</h1>
 		<ul v-load-more="loaderMore" v-if="shopListArr.length" type="1">
 			<router-link :to="{path: 'shop', query:{geohash, id: item.id}}" v-for="item in shopListArr" tag='li' :key="item.id" class="shop_li">
 				<section>
@@ -95,14 +94,15 @@ export default {
   ],
   mixins: [loadMore],
   computed: {
-    ...mapState(['lantitude','longitude'])
+    ...mapState(['latitude','longitude'])
   },
   mounted() {
     this.initData()
   },
   methods: {
     async initData () {
-      let res = await shopList(this.lantitude, this.longitude, this.offset, this.restaurantCategoryId)
+			console.log()
+      let res = await shopList(this.latitude, this.longitude, this.offset, this.restaurantCategoryId)
       let resJson = JSON.parse(res)
       this.shopListArr = [...resJson]
       if (resJson.length < 20) {
@@ -148,7 +148,7 @@ export default {
     async listenPropChange() {
       this.showLoading = true
       this.offset = 0
-      let res = await shopList(this.lantitude, this.longitude, this.offset, this.restaurantCategoryIds, this.sortByType, this.deliveryMode, this.supportIds)
+      let res = await shopList(this.lantitude, this.longitude, this.offset, '', this.restaurantCategoryIds, this.sortByType, this.deliveryMode, this.supportIds)
       let resJson = JSON.parse(res)
       this.hideLoading()
       // 考虑到本地模拟数据是引用类型，所以返回一个县的数组

@@ -5,46 +5,46 @@ const city = r => require.ensure([], () => r(require('../views/city/city')), 'ci
 const msite = r => require.ensure([], () => r(require('../views/msite/msite')), 'msite')
 const search = r => require.ensure([], () => r(require('../views/search/search')), 'search')
 const shop = r => require.ensure([], () => r(require('../views/shop/shop')), 'shop')
-// const login = r => require.ensure([], () => r(require('../views/login/login')), 'login')
-// const profile = r => require.ensure([], () => r(require('../views/profile/profile')), 'profile')
-// const forget = r => require.ensure([], () => r(require('../views/forget/forget')), 'forget')
-// const order = r => require.ensure([], () => r(require('../views/order/order')), 'order')
+const login = r => require.ensure([], () => r(require('../views/login/login')), 'login')
+const profile = r => require.ensure([], () => r(require('../views/profile/profile')), 'profile')
+const forget = r => require.ensure([], () => r(require('../views/forget/forget')), 'forget')
+const order = r => require.ensure([], () => r(require('../views/order/order')), 'order')
 // const orderDetail = r => require.ensure([], () => r(require('../views/order/children/orderDetail')), 'orderDetail')
-// const vipcard = r => require.ensure([], () => r(require('../views/vipcard/vipcard')), 'vipcard')
-// const invoiceRecord = r => require.ensure([], () => r(require('../views/vipcard/children/invoiceRecord')), 'invoiceRecord')
-// const useCart = r => require.ensure([], () => r(require('../views/vipcard/children/useCart')), 'useCart')
-// const vipDescription = r => require.ensure([], () => r(require('../views/vipcard/children/vipDescription')), 'vipDescription')
+const vipcard = r => require.ensure([], () => r(require('../views/vipcard/vipcard')), 'vipcard')
+const invoiceRecord = r => require.ensure([], () => r(require('../views/vipcard/children/invoiceRecord')), 'invoiceRecord')
+const useCart = r => require.ensure([], () => r(require('../views/vipcard/children/useCart')), 'useCart')
+const vipDescription = r => require.ensure([], () => r(require('../views/vipcard/children/vipDescription')), 'vipDescription')
 const food = r => require.ensure([], () => r(require('../views/food/food')), 'food')
-// const confirmOrder = r => require.ensure([], () => r(require('../views/confirmOrder/confirmOrder')), 'confirmOrder')
-// const remark = r => require.ensure([], () => r(require('../views/confirmOrder/children/remark')), 'remark')
-// const payment = r => require.ensure([], () => r(require('../views/confirmOrder/children/payment')), 'payment')
-// const userValidation = r => require.ensure([], () => r(require('../views/confirmOrder/children/userValidation')), 'userValidation')
-// const invoice = r => require.ensure([], () => r(require('../views/confirmOrder/children/invoice')), 'invoice')
-// const chooseAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/chooseAddress')), 'chooseAddress')
-// const addAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/children/addAddress')), 'addAddress')
-// const searchAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/children/children/searchAddress')), 'searchAddress')
+const confirmOrder = r => require.ensure([], () => r(require('../views/confirmOrder/confirmOrder')), 'confirmOrder')
+const remark = r => require.ensure([], () => r(require('../views/confirmOrder/children/remark')), 'remark')
+const payment = r => require.ensure([], () => r(require('../views/confirmOrder/children/payment')), 'payment')
+const userValidation = r => require.ensure([], () => r(require('../views/confirmOrder/children/userValidation')), 'userValidation')
+const invoice = r => require.ensure([], () => r(require('../views/confirmOrder/children/invoice')), 'invoice')
+const chooseAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/chooseAddress')), 'chooseAddress')
+const addAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/children/addAddress')), 'addAddress')
+const searchAddress = r => require.ensure([], () => r(require('../views/confirmOrder/children/children/children/searchAddress')), 'searchAddress')
 const foodDetail = r => require.ensure([], () => r(require('../views/shop/children/foodDetail')), 'foodDetail')
 const shopDetail = r => require.ensure([], () => r(require('../views/shop/children/shopDetail')), 'shopDetail')
 const shopSafe = r => require.ensure([], () => r(require('../views/shop/children/children/shopSafe')), 'shopSafe')
-// const info = r => require.ensure([], () => r(require('../views/profile/children/info')), 'info')
-// const setusername = r => require.ensure([], () => r(require('../views/profile/children/children/setusername')), 'setusername')
-// const address = r => require.ensure([], () => r(require('../views/profile/children/children/address')), 'address')
-// const add = r => require.ensure([], () => r(require('../views/profile/children/children/children/add')), 'add')
-// const addDetail = r => require.ensure([], () => r(require('../views/profile/children/children/children/children/addDetail')), 'addDetail')
-// const balance = r => require.ensure([], () => r(require('../views/balance/balance')), 'balance')
-// const balanceDetail = r => require.ensure([], () => r(require('../views/balance/children/detail')), 'balanceDetail')
-// const benefit = r => require.ensure([], () => r(require('../views/benefit/benefit')), 'benefit')
-// const coupon = r => require.ensure([], () => r(require('../views/benefit/children/coupon')), 'coupon')
-// const hbDescription = r => require.ensure([], () => r(require('../views/benefit/children/hbDescription')), 'hbDescription')
-// const hbHistory = r => require.ensure([], () => r(require('../views/benefit/children/hbHistory')), 'hbHistory')
-// const exchange = r => require.ensure([], () => r(require('../views/benefit/children/exchange')), 'exchange')
-// const commend = r => require.ensure([], () => r(require('../views/benefit/children/commend')), 'commend')
-// const points = r => require.ensure([], () => r(require('../views/points/points')), 'points')
-// const pointsDetail = r => require.ensure([], () => r(require('../views/points/children/detail')), 'pointsDetail')
-// const service = r => require.ensure([], () => r(require('../views/service/service')), 'service')
-// const questionDetail = r => require.ensure([], () => r(require('../views/service/children/questionDetail')), 'questionDetail')
+const info = r => require.ensure([], () => r(require('../views/profile/children/info')), 'info')
+const setusername = r => require.ensure([], () => r(require('../views/profile/children/children/setusername')), 'setusername')
+const address = r => require.ensure([], () => r(require('../views/profile/children/children/address')), 'address')
+const add = r => require.ensure([], () => r(require('../views/profile/children/children/children/add')), 'add')
+const addDetail = r => require.ensure([], () => r(require('../views/profile/children/children/children/children/addDetail')), 'addDetail')
+const balance = r => require.ensure([], () => r(require('../views/balance/balance')), 'balance')
+const balanceDetail = r => require.ensure([], () => r(require('../views/balance/children/detail')), 'balanceDetail')
+const benefit = r => require.ensure([], () => r(require('../views/benefit/benefit')), 'benefit')
+const coupon = r => require.ensure([], () => r(require('../views/benefit/children/coupon')), 'coupon')
+const hbDescription = r => require.ensure([], () => r(require('../views/benefit/children/hbDescription')), 'hbDescription')
+const hbHistory = r => require.ensure([], () => r(require('../views/benefit/children/hbHistory')), 'hbHistory')
+const exchange = r => require.ensure([], () => r(require('../views/benefit/children/exchange')), 'exchange')
+const commend = r => require.ensure([], () => r(require('../views/benefit/children/commend')), 'commend')
+const points = r => require.ensure([], () => r(require('../views/points/points')), 'points')
+const pointsDetail = r => require.ensure([], () => r(require('../views/points/children/detail')), 'pointsDetail')
+const service = r => require.ensure([], () => r(require('../views/service/service')), 'service')
+const questionDetail = r => require.ensure([], () => r(require('../views/service/children/questionDetail')), 'questionDetail')
 // const find = r => require.ensure([], () => r(require('../views/find/find')), 'find')
-// const download = r => require.ensure([], () => r(require('../views/download/download')), 'download')
+const download = r => require.ensure([], () => r(require('../views/download/download')), 'download')
 
 
 
@@ -101,153 +101,153 @@ export default [{
             }]
         },
         //确认订单页
-        // {
-        //     path: '/confirmOrder',
-        //     component: confirmOrder,
-        //     children: [{
-        //         path: 'remark', //订单备注
-        //         component: remark,
-        //     }, {
-        //         path: 'invoice', //发票抬头
-        //         component: invoice,
-        //     }, {
-        //         path: 'payment', //付款页面
-        //         component: payment,
-        //     }, {
-        //         path: 'userValidation', //用户验证
-        //         component: userValidation,
-        //     }, {
-        //         path: 'chooseAddress', //选择地址
-        //         component: chooseAddress,
-        //         children: [{
-        //             path: 'addAddress', //添加地址
-        //             component: addAddress,
-        //             children: [{
-        //                 path: 'searchAddress', //搜索地址
-        //                 component: searchAddress,
-        //             }]
-        //         }, ]
-        //     }, ]
-        // },
+        {
+            path: '/confirmOrder',
+            component: confirmOrder,
+            children: [{
+                path: 'remark', //订单备注
+                component: remark,
+            }, {
+                path: 'invoice', //发票抬头
+                component: invoice,
+            }, {
+                path: 'payment', //付款页面
+                component: payment,
+            }, {
+                path: 'userValidation', //用户验证
+                component: userValidation,
+            }, {
+                path: 'chooseAddress', //选择地址
+                component: chooseAddress,
+                children: [{
+                    path: 'addAddress', //添加地址
+                    component: addAddress,
+                    children: [{
+                        path: 'searchAddress', //搜索地址
+                        component: searchAddress,
+                    }]
+                }, ]
+            }, ]
+        },
         // //登录注册页
-        // {
-        //     path: '/login',
-        //     component: login
-        // },
+        {
+            path: '/login',
+            component: login
+        },
         // //个人信息页
-        // {
-        //     path: '/profile',
-        //     component: profile,
-        //     children: [{
-        //         path: 'info', //个人信息详情页
-        //         component: info,
-        //         children: [{
-        //             path: 'setusername',
-        //             component: setusername,
-        //         },{
-        //             path: 'address',
-        //             component: address,     //编辑地址
-        //             children:[{
-        //                 path:'add',
-        //                 component:add,
-        //                 children:[{
-        //                     path:'addDetail',
-        //                     component:addDetail
-        //                 }]
-        //             }]
-        //         }]
-        //     },
-        //     {
-        //         path: 'service', //服务中心
-        //         component: service,
-        //     },]
-        // },
+        {
+            path: '/profile',
+            component: profile,
+            children: [{
+                path: 'info', //个人信息详情页
+                component: info,
+                children: [{
+                    path: 'setusername',
+                    component: setusername,
+                },{
+                    path: 'address',
+                    component: address,     //编辑地址
+                    children:[{
+                        path:'add',
+                        component:add,
+                        children:[{
+                            path:'addDetail',
+                            component:addDetail
+                        }]
+                    }]
+                }]
+            },
+            {
+                path: 'service', //服务中心
+                component: service,
+            },]
+        },
         // //修改密码页
-        // {
-        //     path: '/forget',
-        //     component: forget
-        // },
+        {
+            path: '/forget',
+            component: forget
+        },
         // //订单列表页
-        // {
-        //     path: '/order',
-        //     component: order,
-        //     children: [{
-        //         path: 'orderDetail', //订单详情页
-        //         component: orderDetail,
-        //     }, ]
-        // },
+        {
+            path: '/order',
+            component: order,
+            // children: [{
+            //     path: 'orderDetail', //订单详情页
+            //     component: orderDetail,
+            // }, ]
+        },
         // //vip卡页
-        // {
-        //     path: '/vipcard',
-        //     component: vipcard,
-        //     children: [{
-        //         path: 'invoiceRecord', //开发票
-        //         component: invoiceRecord,
-        //     }, {
-        //         path: 'useCart', //购买会员卡
-        //         component: useCart,
-        //     }, {
-        //         path: 'vipDescription', //会员说明
-        //         component: vipDescription,
-        //     },]
-        // },
+        {
+            path: '/vipcard',
+            component: vipcard,
+            children: [{
+                path: 'invoiceRecord', //开发票
+                component: invoiceRecord,
+            }, {
+                path: 'useCart', //购买会员卡
+                component: useCart,
+            }, {
+                path: 'vipDescription', //会员说明
+                component: vipDescription,
+            },]
+        },
         // //发现页
         // {
         //     path: '/find',
         //     component: find
         // },
         // //下载页
-        // {
-        //     path: '/download',
-        //     component: download
-        // },
+        {
+            path: '/download',
+            component: download
+        },
         // //服务中心
-        // {
-        //     path: '/service',
-        //     component: service,
-        //      children: [{
-        //         path: 'questionDetail', //订单详情页
-        //         component: questionDetail,
-        //     }, ]
-        // },
+        {
+            path: '/service',
+            component: service,
+             children: [{
+                path: 'questionDetail', //订单详情页
+                component: questionDetail,
+            }, ]
+        },
         // //余额
-        // {
-        //     path: 'balance',
-        //     component: balance,
-        //     children: [{
-        //         path: 'detail', //余额说明
-        //         component: balanceDetail,
-        //     }, ]
-        // },
+        {
+            path: 'balance',
+            component: balance,
+            children: [{
+                path: 'detail', //余额说明
+                component: balanceDetail,
+            }, ]
+        },
         // //我的优惠页
-        // {
-        //     path: 'benefit',
-        //     component: benefit,
-        //     children: [{
-        //         path: 'coupon', //代金券说明
-        //         component: coupon,
-        //     }, {
-        //         path: 'hbDescription', //红包说明
-        //         component: hbDescription,
-        //     }, {
-        //         path: 'hbHistory', //历史红包
-        //         component: hbHistory,
-        //     }, {
-        //         path: 'exchange', //兑换红包
-        //         component: exchange,
-        //     }, {
-        //         path: 'commend', //推荐有奖
-        //         component: commend,
-        //     },]
-        // },
+        {
+            path: 'benefit',
+            component: benefit,
+            children: [{
+                path: 'coupon', //代金券说明
+                component: coupon,
+            }, {
+                path: 'hbDescription', //红包说明
+                component: hbDescription,
+            }, {
+                path: 'hbHistory', //历史红包
+                component: hbHistory,
+            }, {
+                path: 'exchange', //兑换红包
+                component: exchange,
+            }, {
+                path: 'commend', //推荐有奖
+                component: commend,
+            },]
+        },
         // //我的积分页
-        // {
-        //     path: 'points',
-        //     component: points,
-        //     children: [{
-        //         path: 'detail', //积分说明
-        //         component: pointsDetail,
-        //     }, ]
-        // },
+        {
+            path: 'points',
+            component: points,
+            children: [{
+                path: 'detail', //积分说明
+                component: pointsDetail,
+            }, ]
+        },
     ]
 }]

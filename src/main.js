@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import routes from './router/index'
 import store from './store'
 import {routerMode} from './config/env'
+import './config/rem'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
